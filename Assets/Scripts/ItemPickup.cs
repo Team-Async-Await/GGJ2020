@@ -18,7 +18,7 @@ public class ItemPickup : MonoBehaviour
     {
         var player = PlayerController.Instance;
         var ui = UIController.Instance;
-        if (other.tag == "Player")
+        if (other.tag.ToUpper() == "PLAYER1" || other.tag.ToUpper() == "PLAYER2" || other.tag.ToUpper() == "PLAYER")
         {
             switch (this.tag)
             {

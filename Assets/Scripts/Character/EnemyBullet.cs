@@ -23,7 +23,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag.ToUpper() == "PLAYER1" || collision.tag.ToUpper() == "PLAYER2" || collision.tag.ToUpper() == "PLAYER")
         {
             PlayerHealthController.Instance.DamagePlayer();
             AudioManager.Instance.PlaySfx(9);

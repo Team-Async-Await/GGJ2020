@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4232468733964817796}
   - component: {fileID: 4232468733964817795}
   - component: {fileID: 4232468733964817798}
+  - component: {fileID: 2024513904}
   m_Layer: 0
   m_Name: StartLevelCar
   m_TagString: Untagged
@@ -95,14 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37789589ad7c1a49a0b9d101b4174d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: 12.35
-  breakPosition: -5
-  endPosition: -12.5
+  startPosition: 18.93
+  breakPosition: -3.11
+  endPosition: -18.99
   verticalPosition: -2.5
   carSpeed: 7
   carFixed: 0
   carSmoke: {fileID: 4232468734341785557}
-  player1: {fileID: 5120270926550256101, guid: 88265e2bbf3358a49b6587da9436dd8b, type: 3}
+  player1: {fileID: 0}
   player2: {fileID: 8798256969857103347, guid: 223b9cea1f557be4ea1b150e6f441479, type: 3}
   gameStarted: 0
 --- !u!50 &4232468733964817798
@@ -113,7 +114,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4232468733964817794}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -126,6 +127,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &2024513904
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232468733964817794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.09375, y: 1.890625}
+    newSize: {x: 1.09375, y: 1.890625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.09375, y: 1.890625}
+  m_EdgeRadius: 0
 --- !u!1001 &4232468734341685621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +239,14 @@ PrefabInstance:
     - target: {fileID: 19800000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1566472957
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}

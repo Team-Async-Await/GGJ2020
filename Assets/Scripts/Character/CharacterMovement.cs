@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     Rigidbody2D body;
+    SpriteRenderer sprite;
 
     float horizontal;
     float vertical;
@@ -16,10 +17,12 @@ public class CharacterMovement : MonoBehaviour
     Vector2 movement;
     public Sprite idle;
     public Sprite gun;
+    public bool haveGun = false;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -30,6 +33,13 @@ public class CharacterMovement : MonoBehaviour
         running = Input.GetButton("Fire2_" + playerNumber);
         movement.x = horizontal;
         movement.y = vertical;
+        if (haveGun)
+        {
+            sprite.sprite = gun;
+        } else
+        {
+            sprite.sprite = idle;
+        }
     }
 
     void FixedUpdate()

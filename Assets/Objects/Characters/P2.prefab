@@ -98,8 +98,9 @@ MonoBehaviour:
   runSpeed: 5
   walkSpeed: 3
   playerNumber: P2
-  idle: {fileID: 0}
-  gun: {fileID: 0}
+  idle: {fileID: 21300000, guid: b24d05aef40465a4b8fef31195e726ed, type: 3}
+  gun: {fileID: 21300000, guid: 61d177240a8f8d447a8a22fce974dadb, type: 3}
+  haveGun: 0
 --- !u!50 &5679108064309568263
 Rigidbody2D:
   serializedVersion: 4

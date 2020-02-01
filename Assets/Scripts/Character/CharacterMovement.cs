@@ -51,13 +51,14 @@ public class CharacterMovement : MonoBehaviour
         // -90 - Up
         // 180 - Left
         if (horizontal > 0)
-            body.MoveRotation(0);
+            transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         else if (horizontal < 0)
-            body.MoveRotation(180);
+            transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
         else if (vertical > 0)
-            body.MoveRotation(90);
+            transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
         else if (vertical < 0)
-            body.MoveRotation(-90);
+            transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+
 
 
     }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6333634482291270401}
   - component: {fileID: 5730086301175021831}
   - component: {fileID: 5366133112222485767}
+  - component: {fileID: -4581136856490761836}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -101,6 +102,10 @@ MonoBehaviour:
   idle: {fileID: 21300000, guid: eb2fad3202f69014fb965280ad50a585, type: 3}
   gun: {fileID: 21300000, guid: be8af6e625673934a91c35559a6499e2, type: 3}
   haveGun: 0
+  stamina: 100
+  staminaSpeed: 10
+  staminaRecoverSpeed: 5
+  charFace: {x: 1, y: 0}
 --- !u!50 &5730086301175021831
 Rigidbody2D:
   serializedVersion: 4
@@ -148,3 +153,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &-4581136856490761836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120270926550256101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efd56f86c21db449968eefbcef00fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6694563191564454638, guid: 708232618a569154189eaeaa0bb6dee7, type: 3}
+  bulletLifeTime: 1

@@ -46,5 +46,19 @@ public class CharacterMovement : MonoBehaviour
     {
         float speed = (running ? runSpeed : walkSpeed);
         body.MovePosition(body.position + movement * speed * Time.fixedDeltaTime);
+        // 0 = Right
+        // 90 - Down
+        // -90 - Up
+        // 180 - Left
+        if (horizontal > 0)
+            body.MoveRotation(0);
+        else if (horizontal < 0)
+            body.MoveRotation(180);
+        else if (vertical > 0)
+            body.MoveRotation(90);
+        else if (vertical < 0)
+            body.MoveRotation(-90);
+
+
     }
 }

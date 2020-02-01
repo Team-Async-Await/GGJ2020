@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3672405679550443692}
   - component: {fileID: 1251441181843547696}
   - component: {fileID: 6333634482291270401}
-  - component: {fileID: 5730086301175021831}
   - component: {fileID: 5366133112222485767}
   m_Layer: 0
   m_Name: Player1
@@ -101,27 +100,9 @@ MonoBehaviour:
   idle: {fileID: 21300000, guid: eb2fad3202f69014fb965280ad50a585, type: 3}
   gun: {fileID: 21300000, guid: be8af6e625673934a91c35559a6499e2, type: 3}
   haveGun: 0
---- !u!50 &5730086301175021831
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5120270926550256101}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  stamina: 100
+  staminaSpeed: 10
+  staminaRecoverSpeed: 5
 --- !u!61 &5366133112222485767
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
 
+    public int Parts;
+    public int Fuel;
+    public int Tools;
+
     public bool haveGun = false;
 
     private float _shootTimer = 0f;

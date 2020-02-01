@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - PlayerBullet
+  - Parts
+  - Fuel
+  - Tools
   layers:
   - Default
   - TransparentFX
@@ -47,14 +52,17 @@ TagManager:
   - name: Blood
     uniqueID: 2413904903
     locked: 0
-  - name: Wall
-    uniqueID: 1566472957
-    locked: 0
   - name: Items
     uniqueID: 3677814973
     locked: 0
+  - name: Wall
+    uniqueID: 1566472957
+    locked: 0
   - name: Enemy
     uniqueID: 2267989499
+    locked: 0
+  - name: EnemyBullets
+    uniqueID: 2116549231
     locked: 0
   - name: Player
     uniqueID: 2535726753

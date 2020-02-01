@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8816243330072677914}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12050617, y: 0.0015649796}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.44101238, y: 0.67263484}
   m_EdgeRadius: 0
 --- !u!114 &7515685367731837607
 MonoBehaviour:
@@ -157,6 +157,9 @@ MonoBehaviour:
   _blood: {fileID: 3142540543937937723, guid: af4d3a52aab222441a66b0b474aacfc9, type: 3}
   BloodEffect: {fileID: 7265474708969700553, guid: a2b2db6989975da439b60d554129dc70,
     type: 3}
+  Parts: {fileID: 7007980108077175972, guid: 395436d990541f14da5cff503d5cc11f, type: 3}
+  Fuel: {fileID: 117741468481012582, guid: 93e047fed9e872044a6ddeff4dfe9579, type: 3}
+  Tools: {fileID: 2988076540498155896, guid: 01875c47d021d6d4d997a8ec8e89e039, type: 3}
   shouldShoot: 1
   bullet: {fileID: 7240097820057563955, guid: 6c9e722312de836469a34a701763b22e, type: 3}
   FirePoint: {fileID: 7408867712589142747}

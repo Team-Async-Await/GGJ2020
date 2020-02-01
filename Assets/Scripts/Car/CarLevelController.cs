@@ -35,9 +35,11 @@ public class CarLevelController : MonoBehaviour
             if (body.position.x >= breakPosition)
             {
                 body.MovePosition(new Vector2(body.position.x + -1 * carSpeed * Time.fixedDeltaTime, body.position.y));
-            } else
+            }
+            else
             {
                 carSmoke.SetActive(true);
+                //carSmoke.GetComponent<SpriteRenderer>().sortingLayerName = "Wall";
                 if (!gameStarted)
                 {
                     gameStarted = true;
@@ -54,9 +56,11 @@ public class CarLevelController : MonoBehaviour
     }
     void StartGame()
     {
-        var P1Position = new Vector3(transform.position.x , transform.position.y - 1);
-        var P2Position = new Vector3(transform.position.x , transform.position.y + 1);
-        Instantiate(player1, P1Position, transform.rotation);
-        Instantiate(player2, P2Position, transform.rotation);
+        var P1Position = new Vector3(transform.position.x, transform.position.y - 1);
+        var P2Position = new Vector3(transform.position.x, transform.position.y + 1);
+        //Instantiate(player1, P1Position, transform.rotation);
+        //Instantiate(player2, P2Position, transform.rotation);
+        player1.transform.position = P1Position;
+        player1.transform.rotation = transform.rotation;
     }
 }

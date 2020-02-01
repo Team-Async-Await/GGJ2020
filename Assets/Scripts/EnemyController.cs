@@ -11,6 +11,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private GameObject _blood;
     public GameObject BloodEffect;
+    public GameObject Parts;
+    public GameObject Fuel;
+    public GameObject Tools;
 
     public bool shouldShoot;
 
@@ -28,60 +31,43 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, PlayerController.Instance.transform.position) <= rangeToChase)
+        if (PlayerController.Instance == null)
+            return;
+
+        var distance = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
+        _moveDirection = PlayerController.Instance.transform.position - transform.position;
+        _moveDirection.Normalize();
+        if (distance <= rangeToChase)
         {
-            _moveDirection = PlayerController.Instance.transform.position - transform.position;
-            if (shouldShoot)
+            _body.velocity = Vector3.zero;
+            FireCounter -= Time.deltaTime;
+            if (FireCounter <= 0)
             {
-                FireCounter -= Time.deltaTime;
-                if (FireCounter <= 0)
-                {
-                    FireCounter = FireRate;
+                FireCounter = FireRate;
 
-                    var obj = Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
-                    var rot = 0;
-                    if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
-                        rot = 0;
-                    if (transform.rotation.z == 0)
-                        rot = -90;
-                    if (transform.rotation.z < -0.7f && transform.rotation.z > -1f)
-                        rot = 180;
-                    if (transform.rotation.z == -1)
-                        rot = 90;
+                var obj = Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
+                var rot = 0;
+                if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
+                    rot = 0;
+                if (transform.rotation.z == 0)
+                    rot = -90;
+                if (transform.rotation.z < -0.7f && transform.rotation.z > -1f)
+                    rot = 180;
+                if (transform.rotation.z == -1)
+                    rot = 90;
 
-                    obj.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
-                }
+                obj.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            }
+
+            var turn = _moveDirection * MoveSpeed;
+            Rotate(turn);
+
+            if (distance < rangeToChase / 4)
+            {
+                _body.velocity = _moveDirection * MoveSpeed;
+                Rotate(_body.velocity);
             }
         }
-
-        _moveDirection.Normalize();
-        _body.velocity = _moveDirection * MoveSpeed;
-
-        if (Mathf.Abs(_body.velocity.x) > Mathf.Abs(_body.velocity.y))
-        {
-            if (_body.velocity.x > 0)
-                transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
-            else if (_body.velocity.x < 0)
-                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
-            else if (_body.velocity.y > 0)
-                transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
-            else if (_body.velocity.y < 00)
-                transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
-        }
-        else
-        {
-            if (_body.velocity.y > 0)
-                transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
-            else if (_body.velocity.y < 00)
-                transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
-            else if (_body.velocity.x > 0)
-                transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
-            else if (_body.velocity.x < 0)
-                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
-        }
-
-        
-
     }
 
     public void DamageEnemy(int damage)
@@ -92,7 +78,52 @@ public class EnemyController : MonoBehaviour
         if (_health <= 0)
         {
             Instantiate(_blood, transform.position, transform.rotation);
+            
+            var range = Random.Range(0, 100);
+            if (range > -1)
+            {
+                range = Random.Range(0,3);
+                switch (range)
+                {
+                    case 0:
+                        Instantiate(Parts, transform.position, transform.rotation);
+                        break;
+                    case 1:
+                        Instantiate(Fuel, transform.position, transform.rotation);
+                        break;
+                    case 2:
+                        Instantiate(Tools, transform.position, transform.rotation);
+                        break;
+                }
+            }
+
             Destroy(gameObject);
+        }
+    }
+
+    private void Rotate(Vector3 rotate)
+    {
+        if (Mathf.Abs(rotate.x) > Mathf.Abs(rotate.y))
+        {
+            if (rotate.x > 0)
+                transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            else if (rotate.x < 0)
+                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            else if (rotate.y > 0)
+                transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            else if (rotate.y < 00)
+                transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+        }
+        else
+        {
+            if (rotate.y > 0)
+                transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            else if (rotate.y < 0)
+                transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+            else if (rotate.x > 0)
+                transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            else if (rotate.x < 0)
+                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
         }
     }
 }

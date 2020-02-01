@@ -23,6 +23,12 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Player")
+        {
+            PlayerHealthController.Instance.DamagePlayer();
+        }
+
+
         Destroy(gameObject);
     }
 

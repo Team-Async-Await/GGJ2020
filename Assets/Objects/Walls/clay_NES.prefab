@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2538705058863203897}
   - component: {fileID: 2538705058863203903}
   - component: {fileID: 2538705058863203896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clay_NES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1766372651
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4866743391559173416, guid: b8b7add4ed636a249ba5b6dee52ef9cb,
     type: 3}

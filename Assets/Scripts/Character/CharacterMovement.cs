@@ -81,6 +81,5 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             charFace = Vector2.down;
         }
-
     }
 }

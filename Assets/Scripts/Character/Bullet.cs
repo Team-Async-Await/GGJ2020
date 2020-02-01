@@ -12,21 +12,12 @@ public class Bullet : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
+        Debug.Log(other.gameObject.layer);
         if (other.gameObject.layer == 8)
         {
-            Destroy(this);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other);
-        if (other.gameObject.layer == 8)
-        {
-            Destroy(this);
+            Destroy(this.gameObject, 0f);
         }
     }
 

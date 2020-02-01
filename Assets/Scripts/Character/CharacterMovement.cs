@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -21,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
     public float stamina = 100f;
     public float staminaSpeed = 10f;
     public float staminaRecoverSpeed = 5f;
+    public Vector2 charFace = Vector2.right;
 
     void Start()
     {
@@ -63,12 +62,24 @@ public class CharacterMovement : MonoBehaviour
         // -90 - Up
         // 180 - Left
         if (horizontal > 0)
+        {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            charFace = Vector2.right;
+        }
         else if (horizontal < 0)
+        {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            charFace = Vector2.left;
+        }
         else if (vertical > 0)
+        {
             transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            charFace = Vector2.up;
+        }
         else if (vertical < 0)
+        {
             transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+            charFace = Vector2.down;
+        }
     }
 }

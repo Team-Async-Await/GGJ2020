@@ -11,9 +11,15 @@ GameObject:
   - component: {fileID: 4358003969404096159}
   - component: {fileID: 665451085863916677}
   - component: {fileID: 5597414820247783939}
+<<<<<<< HEAD
   - component: {fileID: 3294795154017936852}
   - component: {fileID: 4483082283612352021}
   - component: {fileID: 8169525073238287486}
+=======
+  - component: {fileID: 969948867500718924}
+  - component: {fileID: 2064744977034904408}
+  - component: {fileID: -5890605632523201051}
+>>>>>>> f61e3d109364d73edc0ace4ec8cecd0f2a26aaea
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -105,8 +111,15 @@ MonoBehaviour:
   stamina: 100
   staminaSpeed: 10
   staminaRecoverSpeed: 5
+<<<<<<< HEAD
 --- !u!114 &3294795154017936852
 MonoBehaviour:
+=======
+  charFace: {x: 1, y: 0}
+--- !u!50 &969948867500718924
+Rigidbody2D:
+  serializedVersion: 4
+>>>>>>> f61e3d109364d73edc0ace4ec8cecd0f2a26aaea
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,15 +147,23 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
+<<<<<<< HEAD
   m_Radius: 0.3359375
 --- !u!50 &8169525073238287486
 Rigidbody2D:
   serializedVersion: 4
+=======
+  m_Size: {x: 0.2, y: 0.2}
+  m_EdgeRadius: 0
+--- !u!114 &-5890605632523201051
+MonoBehaviour:
+>>>>>>> f61e3d109364d73edc0ace4ec8cecd0f2a26aaea
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8798256969857103347}
+<<<<<<< HEAD
   m_BodyType: 0
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
@@ -156,3 +177,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+=======
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efd56f86c21db449968eefbcef00fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6694563191564454638, guid: 708232618a569154189eaeaa0bb6dee7, type: 3}
+  bulletLifeTime: 1
+>>>>>>> f61e3d109364d73edc0ace4ec8cecd0f2a26aaea

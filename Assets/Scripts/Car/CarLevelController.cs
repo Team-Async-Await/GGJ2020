@@ -39,7 +39,10 @@ public class CarLevelController : MonoBehaviour
             {
                 carSmoke.SetActive(true);
                 if (!gameStarted)
-                    StartGame();
+                {
+                    gameStarted = true;
+                    Invoke("StartGame", 1f);
+                }
             }
         }
         else
@@ -49,12 +52,10 @@ public class CarLevelController : MonoBehaviour
                 body.MovePosition(new Vector2(body.position.x + -1 * carSpeed * Time.fixedDeltaTime, body.position.y));
         }
     }
-
     void StartGame()
     {
-        gameStarted = true;
-        var P1Position = new Vector3(transform.position.x - 1, transform.position.y - 1);
-        var P2Position = new Vector3(transform.position.x + 1, transform.position.y - 1);
+        var P1Position = new Vector3(transform.position.x , transform.position.y - 1);
+        var P2Position = new Vector3(transform.position.x , transform.position.y + 1);
         Instantiate(player1, P1Position, transform.rotation);
         Instantiate(player2, P2Position, transform.rotation);
     }

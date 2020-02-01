@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
 
     public Sprite Idle;
     public Sprite Gun;
+    public GameObject BulletToFire;
+    public Transform FirePoint;
 
     public Rigidbody2D Body;
     public SpriteRenderer Sprite;
@@ -35,6 +37,17 @@ public class CharacterController : MonoBehaviour
         {
             Sprite.sprite = Idle;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var obj = Instantiate(BulletToFire, FirePoint.position,FirePoint.rotation);
+            obj.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            //            new Quaternion(transform.rotation.x, transform.rotation.y, FirePoint.rotation.z + 0.7f, transform.rotation.w));
+            //Debug.Log(FirePoint.rotation.z);
+        }
+
+
 
         if (_moveInput.x > 0)
             transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);

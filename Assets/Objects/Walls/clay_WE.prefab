@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6842066870202756631}
   - component: {fileID: 6842066870202756625}
   - component: {fileID: 6842066870202756630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clay_WE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1766372651
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8615828453476744365, guid: b8b7add4ed636a249ba5b6dee52ef9cb,
     type: 3}

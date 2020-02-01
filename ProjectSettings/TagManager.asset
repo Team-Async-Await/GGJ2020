@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 190540017
+    locked: 0
+  - name: Items
+    uniqueID: 2242243011
+    locked: 0
+  - name: Enemy
+    uniqueID: 644615801
+    locked: 0
+  - name: Player
+    uniqueID: 3052211113
+    locked: 0
+  - name: Wall
+    uniqueID: 2528594645
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

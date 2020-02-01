@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2751851266090050873}
   - component: {fileID: 2751851266090050872}
-  - component: {fileID: 2751851266090050875}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wooden-horizontal
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -67,8 +66,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 190540017
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3579312908586237921, guid: b8b7add4ed636a249ba5b6dee52ef9cb,
     type: 3}
@@ -82,21 +81,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2751851266090050875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751851266090050877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5af813059387f40429c4e930826b80cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 5
-  walkSpeed: 3
-  playerNumber: P1
-  idle: {fileID: 0}
-  gun: {fileID: 0}
-  haveGun: 0

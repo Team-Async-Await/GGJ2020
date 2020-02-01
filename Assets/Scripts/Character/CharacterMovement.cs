@@ -58,8 +58,5 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
         else if (vertical < 0)
             transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
-
-
-
     }
 }

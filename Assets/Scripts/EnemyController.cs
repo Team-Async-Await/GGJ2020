@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
             if (FireCounter <= 0)
             {
                 FireCounter = FireRate;
-
+                AudioManager.Instance.PlaySfx(6);
                 var obj = Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
                 var rot = 0;
                 if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour
     {
         _health -= damage;
         Instantiate(BloodEffect, transform.position, transform.rotation);
+        AudioManager.Instance.PlaySfx(2);
 
         if (_health <= 0)
         {
@@ -96,7 +97,7 @@ public class EnemyController : MonoBehaviour
                         break;
                 }
             }
-
+            AudioManager.Instance.PlaySfx(1);
             Destroy(gameObject);
         }
     }

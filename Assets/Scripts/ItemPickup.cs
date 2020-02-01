@@ -25,16 +25,19 @@ public class ItemPickup : MonoBehaviour
                 case "Parts":
                     player.Parts++;
                     UIController.Instance.Parts.text = $"Partes: {player.Parts} / 10";
+                    AudioManager.Instance.PlaySfx(3);
                     Destroy(gameObject);
                     break;
                 case "Fuel":
                     player.Fuel++;
                     UIController.Instance.Fuel.text = $"Gasolina: {player.Fuel} / 10";
+                    AudioManager.Instance.PlaySfx(3);
                     Destroy(gameObject);
                     break;
                 case "Tools":
                     player.Tools++;
                     UIController.Instance.Tools.text = $"Ferramentas: {player.Tools} / 10";
+                    AudioManager.Instance.PlaySfx(4);
                     Destroy(gameObject);
                     break;
             }

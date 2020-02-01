@@ -19,10 +19,13 @@ public class PlayerController : MonoBehaviour
     public int Parts;
     public int Fuel;
     public int Tools;
+    public float BulletLifeTime = 0.25f;
 
     public bool haveGun = false;
 
     private float _shootTimer = 0f;
+
+    public string PlayerNumber = "P2";
 
     private void Awake()
     {
@@ -37,8 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _moveInput.x = Input.GetAxisRaw("Horizontal_P2");
-        _moveInput.y = Input.GetAxisRaw("Vertical_P2");
+        _moveInput.x = Input.GetAxisRaw("Horizontal_" + PlayerNumber);
+        _moveInput.y = Input.GetAxisRaw("Vertical_" + PlayerNumber);
         _moveInput.Normalize();
 
         _body.velocity = _moveInput * _moveSpeed;
@@ -53,9 +56,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && _shootTimer <= 0)
+        if (Input.GetButtonDown("Fire1_" + PlayerNumber) && _shootTimer <= 0)
         {
+            AudioManager.Instance.PlaySfx(6);
             var obj = Instantiate(BulletToFire, FirePoint.position, transform.rotation);
+            Destroy(obj, BulletLifeTime);
             var rot = 0;
             if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
                 rot = 0;

@@ -26,8 +26,9 @@ public class EnemyBullet : MonoBehaviour
         if(collision.tag == "Player")
         {
             PlayerHealthController.Instance.DamagePlayer();
+            AudioManager.Instance.PlaySfx(9);
         }
-
+        
 
         Destroy(gameObject);
     }

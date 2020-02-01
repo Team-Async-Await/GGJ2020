@@ -20,6 +20,7 @@ public class Breakable : MonoBehaviour
     {
         if(collision.tag == "PlayerBullet")
         {
+            AudioManager.Instance.PlaySfx(0);
             Destroy(gameObject);
         }
     }

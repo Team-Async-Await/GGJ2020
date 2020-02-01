@@ -19,6 +19,9 @@ public class PlayerBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (collision.tag == "Parts" || collision.tag == "Fuel" || collision.tag == "Tools")
+            return;
+
         Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
 

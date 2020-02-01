@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
 
     float horizontal;
     float vertical;
-    bool running = false;
+    bool running = false;    
 
     public float runSpeed = 5.0f;
     public float walkSpeed = 3.0f;
@@ -18,6 +18,9 @@ public class CharacterMovement : MonoBehaviour
     public Sprite idle;
     public Sprite gun;
     public bool haveGun = false;
+    public float stamina = 100f;
+    public float staminaSpeed = 10f;
+    public float staminaRecoverSpeed = 5f;
 
     void Start()
     {
@@ -45,6 +48,15 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         float speed = (running ? runSpeed : walkSpeed);
+        if (running)
+        {
+            stamina -= Time.fixedDeltaTime * staminaSpeed;
+        } else
+        {
+            if (stamina < 100)
+                stamina += Time.fixedDeltaTime * staminaRecoverSpeed;
+            else if (stamina > 100) stamina = 100;
+        }
         body.MovePosition(body.position + movement * speed * Time.fixedDeltaTime);
         // 0 = Right
         // 90 - Down

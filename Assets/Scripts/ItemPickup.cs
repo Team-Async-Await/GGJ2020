@@ -16,27 +16,27 @@ public class ItemPickup : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var player = PlayerController.Instance;
+        var level = LevelController.Instance;
         var ui = UIController.Instance;
         if (other.tag.ToUpper() == "PLAYER1" || other.tag.ToUpper() == "PLAYER2" || other.tag.ToUpper() == "PLAYER")
         {
             switch (this.tag)
             {
                 case "Parts":
-                    player.Parts++;
-                    UIController.Instance.Parts.text = $"Partes: {player.Parts} / 10";
+                    level.Parts++;
+                    UIController.Instance.Parts.text = $"Partes: {level.Parts} / 10";
                     AudioManager.Instance.PlaySfx(3);
                     Destroy(gameObject);
                     break;
                 case "Fuel":
-                    player.Fuel++;
-                    UIController.Instance.Fuel.text = $"Gasolina: {player.Fuel} / 10";
+                    level.Fuel++;
+                    UIController.Instance.Fuel.text = $"Gasolina: {level.Fuel} / 10";
                     AudioManager.Instance.PlaySfx(3);
                     Destroy(gameObject);
                     break;
                 case "Tools":
-                    player.Tools++;
-                    UIController.Instance.Tools.text = $"Ferramentas: {player.Tools} / 10";
+                    level.Tools++;
+                    UIController.Instance.Tools.text = $"Ferramentas: {level.Tools} / 10";
                     AudioManager.Instance.PlaySfx(4);
                     Destroy(gameObject);
                     break;

@@ -6,11 +6,11 @@ public class EnemyBullet : MonoBehaviour
 {
     public float Speed;
     public Vector3 Direction;
-
+    public PlayerController player;
 
     void Start()
     {
-        Direction = PlayerController.Instance.transform.position - transform.position;
+        Direction = player.transform.position - transform.position;
         Direction.Normalize();
 
     }
@@ -25,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.tag.ToUpper() == "PLAYER1" || collision.tag.ToUpper() == "PLAYER2" || collision.tag.ToUpper() == "PLAYER")
         {
-            PlayerHealthController.Instance.DamagePlayer();
+            PlayerHealthController.Instance.DamagePlayer(collision.gameObject);
             AudioManager.Instance.PlaySfx(9);
         }
         

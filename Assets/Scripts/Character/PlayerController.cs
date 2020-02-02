@@ -24,12 +24,16 @@ public class PlayerController : MonoBehaviour
 
     public string PlayerNumber = "P2";
 
+    public bool Pressed { get; internal set; }
+    public Vector2 LastAcceleration { get; set; }
+
     private void Awake()
     {
         if (PlayerNumber == "P1")
         {
             LevelController.Player1 = this;
-        } else
+        }
+        else
         {
             LevelController.Player2 = this;
         }
@@ -48,7 +52,7 @@ public class PlayerController : MonoBehaviour
         _moveInput.y = Input.GetAxisRaw("Vertical_" + PlayerNumber);
         _moveInput.Normalize();
 
-        _body.velocity = _moveInput * _moveSpeed;
+        //_body.velocity = _moveInput * _moveSpeed;
 
         if (haveGun)
         {
@@ -59,8 +63,52 @@ public class PlayerController : MonoBehaviour
             _sprite.sprite = Idle;
         }
 
+        Move(_moveInput);
 
-        if (Input.GetButtonDown("Fire1_" + PlayerNumber) && _shootTimer <= 0)
+
+        if (Input.GetButtonDown("Fire1_" + PlayerNumber))
+        {
+            Shoot();
+        }
+
+        if (_shootTimer > -1)
+            _shootTimer -= Time.deltaTime;
+
+
+
+        //if (_moveInput.x > 0)
+        //    transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        //else if (_moveInput.x < 0)
+        //    transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+        //else if (_moveInput.y > 0)
+        //    transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+        //else if (_moveInput.y < 0)
+        //    transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+    }
+
+    public void Move(Vector2 moveInput)
+    {
+        if (!(moveInput.x == 0 && moveInput.y == 0))
+            LastAcceleration = moveInput;
+
+        if (Pressed)
+            _body.velocity = LastAcceleration * _moveSpeed;
+        else
+            _body.velocity = moveInput * _moveSpeed;
+
+        if (moveInput.x > 0)
+            transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        else if (moveInput.x < 0)
+            transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+        else if (moveInput.y > 0)
+            transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+        else if (moveInput.y < 0)
+            transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+    }
+
+    public void Shoot()
+    {
+        if (_shootTimer <= 0)
         {
             AudioManager.Instance.PlaySfx(6);
             var obj = Instantiate(BulletToFire, FirePoint.position, transform.rotation);
@@ -78,19 +126,7 @@ public class PlayerController : MonoBehaviour
             obj.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
             _shootTimer = 0.5f;
         }
-
-        if (_shootTimer > -1)
-            _shootTimer -= Time.deltaTime;
-
-
-
-        if (_moveInput.x > 0)
-            transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
-        else if (_moveInput.x < 0)
-            transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
-        else if (_moveInput.y > 0)
-            transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
-        else if (_moveInput.y < 0)
-            transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
     }
+
+
 }

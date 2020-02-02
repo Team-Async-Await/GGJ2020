@@ -20,14 +20,17 @@ public class DoorOpen : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (
-            (other.tag.ToUpper() == "PLAYER1" && Input.GetButtonDown("Fire2_P1"))
-            || ((other.tag.ToUpper() == "PLAYER2" && Input.GetButtonDown("Fire2_P2")))
-            )
+        if (other.tag.ToUpper() == "PLAYER1" || other.tag.ToUpper() == "PLAYER2")
         {
-            RoomClosed.SetActive(false);
-            RoomOpened.SetActive(true);
-            this.enabled = false;
+            if (
+                (other.tag.ToUpper() == "PLAYER1" && Input.GetButtonDown("Fire2_P1"))
+                || (other.tag.ToUpper() == "PLAYER2" && Input.GetButtonDown("Fire2_P2"))
+                )
+            {
+                RoomClosed.SetActive(false);
+                RoomOpened.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }

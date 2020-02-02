@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class PlayerHealthController : MonoBehaviour
     private void Update()
     {
         UpdateUI();
-        var renderer = PlayerController.Instance.GetComponent<SpriteRenderer>();
+        var renderer = LevelController.Player1.GetComponent<SpriteRenderer>();
 
         if (InvincCount > 0)
         {
@@ -63,8 +64,9 @@ public class PlayerHealthController : MonoBehaviour
         CurrentHealth--;
         if (CurrentHealth <= 0)
         {
-            PlayerController.Instance.gameObject.SetActive(false);
-            UIController.Instance.DeathScreen.SetActive(true);
+            LevelController.Player1.gameObject.SetActive(false);
+            //UIController.Instance.DeathScreen.SetActive(true);
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

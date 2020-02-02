@@ -2,8 +2,6 @@
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance;
-
     [SerializeField]
     private float _moveSpeed;
     private Vector2 _moveInput;
@@ -15,10 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
-
-    public int Parts;
-    public int Fuel;
-    public int Tools;
     public float BulletLifeTime = 0.25f;
 
     public bool haveGun = false;
@@ -29,7 +23,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (PlayerNumber == "P1")
+        {
+            LevelController.Player1 = this;
+        } else
+        {
+            LevelController.Player2 = this;
+        }
     }
 
     private void Start()

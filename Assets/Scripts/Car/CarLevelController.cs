@@ -27,6 +27,17 @@ public class CarLevelController : MonoBehaviour
         transform.position = new Vector2(startPosition, verticalPosition);
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (
+            (other.tag.ToUpper() == "PLAYER1" && Input.GetButtonDown("Fire2_P1"))
+            || ((other.tag.ToUpper() == "PLAYER2" && Input.GetButtonDown("Fire2_P2")))
+            )
+        {
+            carFixed = true;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

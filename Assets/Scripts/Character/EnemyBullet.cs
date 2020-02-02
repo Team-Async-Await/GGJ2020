@@ -6,11 +6,11 @@ public class EnemyBullet : MonoBehaviour
 {
     public float Speed;
     public Vector3 Direction;
-
+    public PlayerController player;
 
     void Start()
     {
-        Direction = PlayerController.Instance.transform.position - transform.position;
+        Direction = player.transform.position - transform.position;
         Direction.Normalize();
 
     }

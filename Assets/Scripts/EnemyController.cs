@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -31,11 +32,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.Instance == null)
+        MoveAndShot(LevelController.Player1);
+        MoveAndShot(LevelController.Player2);
+    }
+
+    private void MoveAndShot(PlayerController player)
+    {
+        if (player == null)
             return;
 
-        var distance = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
-        _moveDirection = PlayerController.Instance.transform.position - transform.position;
+        var distance = Vector3.Distance(transform.position, player.transform.position);
+        _moveDirection = player.transform.position - transform.position;
         _moveDirection.Normalize();
         if (distance <= rangeToChase)
         {
@@ -46,6 +53,7 @@ public class EnemyController : MonoBehaviour
                 FireCounter = FireRate;
                 AudioManager.Instance.PlaySfx(6);
                 var obj = Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
+                obj.GetComponent<EnemyBullet>().player = player;
                 var rot = 0;
                 if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
                     rot = 0;
@@ -80,10 +88,10 @@ public class EnemyController : MonoBehaviour
         {
             Instantiate(_blood, transform.position, transform.rotation);
             
-            var range = Random.Range(0, 100);
+            var range = UnityEngine.Random.Range(0, 100);
             if (range > -1)
             {
-                range = Random.Range(0,3);
+                range = UnityEngine.Random.Range(0,3);
                 switch (range)
                 {
                     case 0:

@@ -23,9 +23,9 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        Parts.text = $"Partes: 0 / 10";
-        Fuel.text = $"Gasolina: 0 / 10";
-        Tools.text = $"Ferramentas: 0 / 10";
+        Parts.text = $"Partes: 0 / " + LevelController.Instance.RequiredParts;
+        Fuel.text = $"Gasolina: 0 / " + LevelController.Instance.RequiredFuel;
+        Tools.text = $"Ferramentas: 0 / " + LevelController.Instance.RequiredTools;
     }
 
     void Update()

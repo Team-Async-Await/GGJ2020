@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
                 AudioManager.Instance.PlaySfx(6);
                 var obj = Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
                 obj.GetComponent<EnemyBullet>().player = player;
+                Destroy(obj, 0.5f);
                 var rot = 0;
                 if (transform.rotation.z > 0.7f && transform.rotation.z < 1f)
                     rot = 0;

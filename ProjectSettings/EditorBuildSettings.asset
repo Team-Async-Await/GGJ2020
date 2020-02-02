@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndStory_2P.unity
     guid: 060d0239a08f9df46b7e0200615d41d4
+  - enabled: 1
+    path: Assets/Scenes/Prologue_Level_1.unity
+    guid: 9cfe939bd73547441a83850dabfa7b97
   m_configObjects: {}

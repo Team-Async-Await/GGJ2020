@@ -73,5 +73,7 @@ public class CarLevelController : MonoBehaviour
         //Instantiate(player2, P2Position, transform.rotation);
         player1.transform.position = P1Position;
         player1.transform.rotation = transform.rotation;
+        player2.transform.position = P2Position;
+        player2.transform.rotation = transform.rotation;
     }
 }

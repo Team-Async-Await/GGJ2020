@@ -25,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.tag.ToUpper() == "PLAYER1" || collision.tag.ToUpper() == "PLAYER2" || collision.tag.ToUpper() == "PLAYER")
         {
-            PlayerHealthController.Instance.DamagePlayer();
+            PlayerHealthController.Instance.DamagePlayer(collision.gameObject);
             AudioManager.Instance.PlaySfx(9);
         }
         

@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour
 {
 
     public static PlayerHealthController Instance;
-
-    public int CurrentHealth;
-    public int MaxHealth;
 
     public float DamageInvincLength = 1f;
     private float InvincCount;
@@ -20,53 +18,55 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Start()
     {
-        CurrentHealth = MaxHealth;
-
         UpdateUI();
     }
 
     private void Update()
     {
         UpdateUI();
-        var renderer = LevelController.Player1.GetComponent<SpriteRenderer>();
-
-        if (InvincCount > 0)
-        {
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.5f);
-            InvincCount -= Time.deltaTime;
-        }
-        else
-        {
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 1f);
-        }
     }
 
 
     private void UpdateUI()
     {
-        UIController.Instance.HealthSlider.maxValue = MaxHealth;
-        UIController.Instance.HealthSlider.value = CurrentHealth;
-
-        UIController.Instance.HealthText.text = $"{CurrentHealth} / {MaxHealth}";
+        if (LevelController.Player1 != null)
+        {
+            UIController.Instance.HealthSliderP1.maxValue = LevelController.Player1.MaxHealth;
+            UIController.Instance.HealthSliderP1.value = LevelController.Player1.CurrentHealth;
+            UIController.Instance.HealthTextP1.text = $"{LevelController.Player1.CurrentHealth} / {LevelController.Player1.MaxHealth}";
+        }
+        if (LevelController.Player2 != null)
+        {
+            UIController.Instance.HealthSliderP2.maxValue = LevelController.Player2.MaxHealth;
+            UIController.Instance.HealthSliderP2.value = LevelController.Player2.CurrentHealth;
+            UIController.Instance.HealthTextP2.text = $"{LevelController.Player2.CurrentHealth} / {LevelController.Player2.MaxHealth}";
+        }
     }
 
-    public void DamagePlayer()
+    public void DamagePlayer(GameObject player)
     {
-        
+        var renderer = player.GetComponent<SpriteRenderer>();
+        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.5f);
         if (InvincCount > 0)
         {
             return;
         }
-          
 
-
-        InvincCount = DamageInvincLength;
-        CurrentHealth--;
-        if (CurrentHealth <= 0)
+        InvincCount = 1;
+        StartCoroutine(Invicible(renderer, DamageInvincLength));
+        var playerController = player.GetComponent<PlayerController>();
+        playerController.CurrentHealth--;
+        if (playerController.CurrentHealth <= 0)
         {
-            LevelController.Player1.gameObject.SetActive(false);
-            //UIController.Instance.DeathScreen.SetActive(true);
+            player.SetActive(false);
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    IEnumerator Invicible(SpriteRenderer renderer, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        InvincCount = 0;
+        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 1f);
     }
 }

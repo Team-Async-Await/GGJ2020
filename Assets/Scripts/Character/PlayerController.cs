@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     private float _moveSpeed;
     private Vector2 _moveInput;
 
+    public int CurrentHealth;
+    public int MaxHealth;
+
     public Sprite Idle;
     public Sprite Gun;
     public GameObject BulletToFire;
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        CurrentHealth = MaxHealth;
     }
 
     private void Update()

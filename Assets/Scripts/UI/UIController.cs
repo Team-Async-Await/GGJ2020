@@ -7,9 +7,10 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
-    public Slider HealthSlider;
-    public Text HealthText;
-    public GameObject DeathScreen;
+    public Slider HealthSliderP1;
+    public Text HealthTextP1;
+    public Slider HealthSliderP2;
+    public Text HealthTextP2;
     public Text Parts;
     public Text Fuel;
     public Text Tools;

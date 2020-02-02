@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1628481655292328804}
   - component: {fileID: 2069922664744035139}
   - component: {fileID: 171547730377901491}
+  - component: {fileID: -7834168894552302484}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240097820057563955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3443434, y: -0.7413354, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,3 +113,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 30
   Direction: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+--- !u!50 &-7834168894552302484
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240097820057563955}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float _shootTimer = 0f;
 
     public string PlayerNumber = "P2";
+    private Vector2 Direction;
 
     public bool Pressed { get; internal set; }
     public Vector2 LastAcceleration { get; set; }
@@ -71,6 +72,11 @@ public class PlayerController : MonoBehaviour
             Shoot();
         }
 
+        if (Input.GetButtonDown("Fire2_" + PlayerNumber))
+        {
+            Action();
+        }
+
         if (_shootTimer > -1)
             _shootTimer -= Time.deltaTime;
 
@@ -97,13 +103,25 @@ public class PlayerController : MonoBehaviour
             _body.velocity = moveInput * _moveSpeed;
 
         if (moveInput.x > 0)
+        {
             transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+            Direction = new Vector2(1, 0);
+        }
         else if (moveInput.x < 0)
+        {
             transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            Direction = new Vector2(-1, 0);
+        }
         else if (moveInput.y > 0)
+        {
             transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+            Direction = new Vector2(0, 1);
+        }
         else if (moveInput.y < 0)
+        {
             transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+            Direction = new Vector2(0, -1);
+        }
     }
 
     public void Shoot()
@@ -120,13 +138,27 @@ public class PlayerController : MonoBehaviour
                 rot = -90;
             if (transform.rotation.z < -0.7f && transform.rotation.z > -1f)
                 rot = 180;
-            if (transform.rotation.z == -1)
+            if (Mathf.Abs(transform.rotation.z) == 1)
                 rot = 90;
+
+            Debug.Log($"z: {transform.rotation.z}");
 
             obj.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
             _shootTimer = 0.5f;
         }
     }
 
+    public void Action()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction);
+        Debug.DrawRay(transform.position, Direction);
+        if (hit.collider != null && hit.collider.tag.ToLower() == "door")
+        {
+            var doorOpen = hit.collider.GetComponent<DoorOpen>();
+            doorOpen.RoomClosed.SetActive(false);
+            doorOpen.RoomOpened.SetActive(true);
+            doorOpen.gameObject.SetActive(false);
+        }
+    }
 
 }

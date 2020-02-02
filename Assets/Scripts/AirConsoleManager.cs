@@ -79,6 +79,8 @@ public class AirConsoleManager : MonoBehaviour
         {
             if (action.ToString() == "shoot")
                 gamePlayer.Shoot();
+            if (action.ToString() == "use")
+                gamePlayer.Action();
         }
         //Move
         action = data["data"]["key"];

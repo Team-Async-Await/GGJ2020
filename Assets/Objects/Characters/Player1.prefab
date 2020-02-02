@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2927296538305062382}
   - component: {fileID: 2927296538305062373}
   - component: {fileID: 2927296538305062378}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Player1
   m_TagString: Player1
   m_Icon: {fileID: 0}
@@ -120,14 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  CurrentHealth: 0
+  MaxHealth: 0
   Idle: {fileID: 21300000, guid: 349bcf87da0b94a4f8aefd98734b14dd, type: 3}
   Gun: {fileID: 21300000, guid: ea81dd84b6e23a94d9d66bbe9f46faf5, type: 3}
   BulletToFire: {fileID: 9121513591163850996, guid: dd6cfdd41fbb98d41bf50b4b6acacf70,
     type: 3}
   FirePoint: {fileID: 4270935709447726402}
-  Parts: 0
-  Fuel: 0
-  Tools: 0
   BulletLifeTime: 0.25
   haveGun: 1
   PlayerNumber: P2
@@ -177,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270935709447726402}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

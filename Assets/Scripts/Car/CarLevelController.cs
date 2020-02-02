@@ -99,6 +99,7 @@ public class CarLevelController : MonoBehaviour
     void StartGame()
     {
         AudioManager.Instance.GameLoop.Play();
+        AudioManager.Instance.GameLoop.loop = true;
         var P1Position = new Vector3(transform.position.x - 1, transform.position.y);
         var P2Position = new Vector3(transform.position.x + 1, transform.position.y);
         player1.transform.position = P1Position;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6148720369354871479}
   - component: {fileID: 6148720369354871484}
   - component: {fileID: 6148720369354871475}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -119,13 +119,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  CurrentHealth: 0
+  MaxHealth: 0
   Idle: {fileID: 0}
   Gun: {fileID: 0}
   BulletToFire: {fileID: 0}
   FirePoint: {fileID: 0}
-  Body: {fileID: 0}
-  Sprite: {fileID: 0}
+  BulletLifeTime: 0.25
   haveGun: 0
+  PlayerNumber: P2
 --- !u!58 &6148720369354871484
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/Prologue_1P.unity
     guid: b82ca14f2f9760e499bd97b08591327b
   - enabled: 1
     path: Assets/Scenes/Level_0.unity
@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 0e5a613fd35bcc74493a65498f534f3f
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 5d9a7a1cc67fcde42ba966088a7fd482
+  - enabled: 1
+    path: Assets/Scenes/Prologue_2P.unity
+    guid: dd19d775e9c52b44e9e35c160fc80acc
+  - enabled: 1
+    path: Assets/Scenes/EndStory_1P.unity
+    guid: 562bbe45803eca04681269940f313a00
+  - enabled: 1
+    path: Assets/Scenes/EndStory_2P.unity
+    guid: 060d0239a08f9df46b7e0200615d41d4
   m_configObjects: {}

@@ -58,9 +58,12 @@ public class CarLevelController : MonoBehaviour
                 carFixed = true;
                 CameraCinematic.SetActive(true);
                 CameraP1.SetActive(false);
-                CameraP2.SetActive(false);
                 player1.SetActive(false);
-                player2.SetActive(false);
+                if (player2 != null)
+                {
+                    CameraP2.SetActive(false);
+                    player2.SetActive(false);
+                }
             }
         }
     }
@@ -92,7 +95,10 @@ public class CarLevelController : MonoBehaviour
                 body.MovePosition(new Vector2(body.position.x, body.position.y + carSpeed * Time.fixedDeltaTime));
             else
             {
-                SceneManager.LoadScene("EndGame");
+                if (player2 == null)
+                    SceneManager.LoadScene("EndStory_1P");
+                else
+                    SceneManager.LoadScene("EndStory_2P");
             }
         }
     }
@@ -106,9 +112,12 @@ public class CarLevelController : MonoBehaviour
         player1.transform.rotation = transform.rotation;
 
         CameraCinematic.SetActive(false);
-        CameraP1.SetActive(true);
-        CameraP2.SetActive(true);
-        player2.transform.position = P2Position;
-        player2.transform.rotation = transform.rotation;
+        CameraP1.SetActive(true);        
+        if (player2 != null)
+        {
+            CameraP2.SetActive(true);
+            player2.transform.position = P2Position;
+            player2.transform.rotation = transform.rotation;
+        }
     }
 }

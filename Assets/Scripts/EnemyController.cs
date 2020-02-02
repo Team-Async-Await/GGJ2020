@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
             Instantiate(_blood, transform.position, transform.rotation);
             
             var range = UnityEngine.Random.Range(0, 100);
-            if (range > -1)
+            if (range > 101)
             {
                 range = UnityEngine.Random.Range(0,3);
                 switch (range)

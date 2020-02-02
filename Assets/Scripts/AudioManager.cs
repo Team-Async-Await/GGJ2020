@@ -19,7 +19,6 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         GameLoop.Stop();
-        GameLoop.Play();
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarLevelController : MonoBehaviour
 {
@@ -44,25 +45,23 @@ public class CarLevelController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetButtonDown("Fire2_P1"))
-        {
-            var t = 100;
-            t = 1 + 2;
-        }
-
-        if (Input.GetButtonDown("Fire2_P2"))
-        {
-            var t = 100;
-            t = 1 + 2;
-        }
-
-
         if (
             (other.tag.ToUpper() == "PLAYER1" && Input.GetButtonDown("Fire2_P1"))
             || ((other.tag.ToUpper() == "PLAYER2" && Input.GetButtonDown("Fire2_P2")))
             )
         {
-            carFixed = true;
+            if ((LevelController.Instance.RequiredParts <= LevelController.Instance.Parts)
+                && (LevelController.Instance.RequiredFuel <= LevelController.Instance.Fuel)
+                && (LevelController.Instance.RequiredTools <= LevelController.Instance.Tools)
+                )
+            {
+                carFixed = true;
+                CameraCinematic.SetActive(true);
+                CameraP1.SetActive(false);
+                CameraP2.SetActive(false);
+                player1.SetActive(false);
+                player2.SetActive(false);
+            }
         }
     }
 
@@ -91,10 +90,15 @@ public class CarLevelController : MonoBehaviour
             carSmoke.SetActive(false);
             if (body.position.y <= endPosition)
                 body.MovePosition(new Vector2(body.position.x, body.position.y + carSpeed * Time.fixedDeltaTime));
+            else
+            {
+                SceneManager.LoadScene("EndGame");
+            }
         }
     }
     void StartGame()
     {
+        AudioManager.Instance.GameLoop.Play();
         var P1Position = new Vector3(transform.position.x - 1, transform.position.y);
         var P2Position = new Vector3(transform.position.x + 1, transform.position.y);
         player1.transform.position = P1Position;

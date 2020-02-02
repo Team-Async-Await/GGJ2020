@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource[] Sfx;
 
+    public AudioSource GameLoop;
+
     private void Awake()
     {
         Instance = this;
@@ -16,7 +18,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        
+        GameLoop.Stop();
+        GameLoop.Play();
     }
 
     // Update is called once per frame

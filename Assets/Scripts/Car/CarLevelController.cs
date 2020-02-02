@@ -7,8 +7,8 @@ public class CarLevelController : MonoBehaviour
     public float startPosition;
     public float breakPosition;
     public float endPosition;
-    public float verticalPosition;
-    public float carSpeed = 7f;
+    public float horizontalPosition;
+    public float carSpeed = 12f;
 
     public bool carFixed = false;
     public GameObject carSmoke;
@@ -21,6 +21,10 @@ public class CarLevelController : MonoBehaviour
     public GameObject CameraCinematic;
 
 
+    public GameObject StartPosition;
+    public GameObject BrakePosition;
+    public GameObject EndPosition;
+
     public bool gameStarted = false;
 
     Rigidbody2D body;
@@ -28,13 +32,31 @@ public class CarLevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        horizontalPosition = StartPosition.transform.position.x;
+        startPosition = StartPosition.transform.position.y;
+        breakPosition = BrakePosition.transform.position.y;
+        endPosition = EndPosition.transform.position.y;
+
         body = GetComponent<Rigidbody2D>();
         carSmoke.SetActive(false);
-        transform.position = new Vector2(startPosition, verticalPosition);
+        transform.position = new Vector2(horizontalPosition, startPosition);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if (Input.GetButtonDown("Fire2_P1"))
+        {
+            var t = 100;
+            t = 1 + 2;
+        }
+
+        if (Input.GetButtonDown("Fire2_P2"))
+        {
+            var t = 100;
+            t = 1 + 2;
+        }
+
+
         if (
             (other.tag.ToUpper() == "PLAYER1" && Input.GetButtonDown("Fire2_P1"))
             || ((other.tag.ToUpper() == "PLAYER2" && Input.GetButtonDown("Fire2_P2")))
@@ -49,9 +71,9 @@ public class CarLevelController : MonoBehaviour
     {
         if (!carFixed)
         {
-            if (body.position.x >= breakPosition)
+            if (body.position.y <= breakPosition)
             {
-                body.MovePosition(new Vector2(body.position.x + -1 * carSpeed * Time.fixedDeltaTime, body.position.y));
+                body.MovePosition(new Vector2(body.position.x, body.position.y + carSpeed * Time.fixedDeltaTime));
             }
             else
             {
@@ -67,14 +89,14 @@ public class CarLevelController : MonoBehaviour
         else
         {
             carSmoke.SetActive(false);
-            if (body.position.x >= endPosition)
-                body.MovePosition(new Vector2(body.position.x + -1 * carSpeed * Time.fixedDeltaTime, body.position.y));
+            if (body.position.y <= endPosition)
+                body.MovePosition(new Vector2(body.position.x, body.position.y + carSpeed * Time.fixedDeltaTime));
         }
     }
     void StartGame()
     {
-        var P1Position = new Vector3(transform.position.x, transform.position.y - 1);
-        var P2Position = new Vector3(transform.position.x, transform.position.y + 1);        
+        var P1Position = new Vector3(transform.position.x - 1, transform.position.y);
+        var P2Position = new Vector3(transform.position.x + 1, transform.position.y);
         player1.transform.position = P1Position;
         player1.transform.rotation = transform.rotation;
 

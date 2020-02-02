@@ -15,6 +15,12 @@ public class CarLevelController : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+
+    public GameObject CameraP1;
+    public GameObject CameraP2;
+    public GameObject CameraCinematic;
+
+
     public bool gameStarted = false;
 
     Rigidbody2D body;
@@ -62,5 +68,9 @@ public class CarLevelController : MonoBehaviour
         //Instantiate(player2, P2Position, transform.rotation);
         player1.transform.position = P1Position;
         player1.transform.rotation = transform.rotation;
+
+        CameraCinematic.SetActive(false);
+        CameraP1.SetActive(true);
+        CameraP2.SetActive(true);
     }
 }
